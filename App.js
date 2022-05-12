@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React, { useRef, useState } from 'react';
 import {
   SafeAreaView,
@@ -15,7 +7,12 @@ import {
   Text,
   useColorScheme,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Button,
+  Alert,
+  Image,
+  KeyboardAvoidingView,
+  TextInput
 } from 'react-native';
 
 import {
@@ -26,22 +23,49 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { RNCamera } from 'react-native-camera'
-import CategoryListItem from './components/CategoryListItem';
+import Task from './components/Task';
+import TodoList from './components/TodoList';
+import CalendarScreen from './components/Calendar/CalendarScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+const Stack = createBottomTabNavigator();
+import Svg, {
+  SvgUri
+} from 'react-native-svg';
+import Autocode from './assets/svg/autocode.svg'
+import Heartcalendar from './assets/svg/heartcalendar.svg'
 const App = () => {
-
   return (
-    <View style={styles.container}>
-      <CategoryListItem />
-    </View >
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Today"
+          component={TodoList}
+          options={{
+            title: "Today's tasks", tabBarIcon: () => (
+              <Icon name="calendar" width={120} height={40} />
+
+            )
+          }}
+        />
+        <Stack.Screen
+          name="Calendar"
+          component={CalendarScreen}
+          options={{
+            title: "Calendar",
+            tabBarIcon: () => (
+              <Icon name="calendar-week" size={25} solid color={"#ffaaad"} />
+            )
+          }}
+        />
+        <Stack.Screen
+          name="Week"
+          component={TodoList}
+          options={{ title: "Week's tasks" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 10
-  },
-});
-
-
 export default App;
