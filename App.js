@@ -1,40 +1,11 @@
-import React, { useRef, useState } from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  TouchableOpacity,
-  Button,
-  Alert,
-  Image,
-  KeyboardAvoidingView,
-  TextInput
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import { RNCamera } from 'react-native-camera'
-import Task from './components/Task';
-import TodoList from './components/TodoList';
-import CalendarScreen from './components/Calendar/CalendarScreen';
-import { NavigationContainer } from '@react-navigation/native';
+import React from 'react'
+import Config from "react-native-config";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import CalendarScreen from './components/Calendar/CalendarScreen';
+import TodoList from './components/TodoList';
 const Stack = createBottomTabNavigator();
-import Svg, {
-  SvgUri
-} from 'react-native-svg';
-import Autocode from './assets/svg/autocode.svg'
-import Heartcalendar from './assets/svg/heartcalendar.svg'
 const App = () => {
   return (
     <NavigationContainer>

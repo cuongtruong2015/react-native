@@ -1,31 +1,12 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  TouchableOpacity,
-  Button,
-  Alert,
-  Image,
-  KeyboardAvoidingView,
-  TextInput
+  Button, KeyboardAvoidingView, StyleSheet,
+  Text, TextInput, TouchableOpacity, View
 } from 'react-native';
+import React from 'react'
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import { RNCamera } from 'react-native-camera'
-import Task from './Task';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Task from './Task';
 const Stack = createBottomTabNavigator();
 export default function TodoList({ navigation, route }) {
   const [task, setTask] = useState();
